@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id
+  name      String
+  avatar    String
+  position  Json     // Stores x, y coordinates
+  inventory Json[]   // Stores array of items
+  stats     Json     // Stores health, xp, level
+}
+
+model Item {
+  id        String   @id
+  name      String
+  icon      String
+  type      String
+  effect    String?
+  position  Json     // Stores x, y coordinates
+} 
